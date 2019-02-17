@@ -4,11 +4,14 @@ if [[ `uname` == 'MINGW64_NT-10.0'* ]]; then
   # winpty provides TTY for stin/stout for git-bash
   # see https://github.com/rprichard/winpty
   CMD_PREFIX='winpty'
+  # Escape path conversion on Windows. 
+  # See https://stackoverflow.com/questions/50608301
+  PATH_PREFIX='/'
 fi
 
 $CMD_PREFIX docker run -it --rm \
-    -v "$(pwd)":/workdir \
-    -w /workdir \
+    -v "$PATH_PREFIX$(pwd)":/workdir \
+    -w $PATH_PREFIX/workdir \
     php:7.2.14 \
     php "$@"
 
