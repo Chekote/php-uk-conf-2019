@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 
-docker run -it --rm php:7.2.14 php "$@"
+if [[ `uname` == 'MINGW64_NT-10.0'* ]]; then
+  # winpty provides TTY for stin/stout for git-bash
+  # see https://github.com/rprichard/winpty
+  CMD_PREFIX='winpty'
+fi
+
+$CMD_PREFIX docker run -it --rm php:7.2.14 php "$@"
 
