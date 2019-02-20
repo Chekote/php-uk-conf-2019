@@ -11,6 +11,7 @@ fi
 
 $CMD_PREFIX docker run -it --rm \
     -v "$PATH_PREFIX$(pwd)":/workdir \
+    -v "${PATH_PREFIX}${HOME}/.composer":/home/user/.composer \
     -w $PATH_PREFIX/workdir \
     php:7.2.14 \
     php "$@"
