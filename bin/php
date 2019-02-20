@@ -7,9 +7,14 @@ if [[ `uname` == 'MINGW64_NT-10.0'* ]]; then
   # Escape path conversion on Windows. 
   # See https://stackoverflow.com/questions/50608301
   PATH_PREFIX='/'
+elif [[ `uname` == 'Linux' ]]; then
+  # This will fix the issue on Linux, because we’ll be running as the same user in both the container and the host.
+  # Any files created by the container will be owned by the correct user now.
+  USER_ARG="-u `id -u`"
 fi
 
 $CMD_PREFIX docker run -it --rm \
+    ${USER_ARG} \
     -v "$PATH_PREFIX$(pwd)":/workdir \
     -v "${PATH_PREFIX}${HOME}/.composer":/home/user/.composer \
     -w $PATH_PREFIX/workdir \
