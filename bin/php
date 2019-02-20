@@ -10,7 +10,7 @@ if [[ `uname` == 'MINGW64_NT-10.0'* ]]; then
 elif [[ `uname` == 'Linux' ]]; then
   # This will fix the issue on Linux, because we’ll be running as the same user in both the container and the host.
   # Any files created by the container will be owned by the correct user now.
-  USER_ARG="-u `id -u`"
+  USER_ARG="-e LOCAL_USER_ID=`id -u`"
 fi
 
 $CMD_PREFIX docker run -it --rm \
@@ -18,6 +18,6 @@ $CMD_PREFIX docker run -it --rm \
     -v "$PATH_PREFIX$(pwd)":/workdir \
     -v "${PATH_PREFIX}${HOME}/.composer":/home/user/.composer \
     -w $PATH_PREFIX/workdir \
-    php:7.2.14 \
+    chekote/php:7.2.14 \
     php "$@"
 
