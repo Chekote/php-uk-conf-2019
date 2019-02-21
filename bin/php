@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Ensure that the ~/.composer folder exists before trying to mount it
+if [ ! -d "${PATH_PREFIX}${HOME}/.composer" ]; then
+  mkdir "${PATH_PREFIX}${HOME}/.composer"
+fi
+
 if [[ `uname` == 'MINGW64_NT-10.0'* ]]; then
   # winpty provides TTY for stin/stout for git-bash
   # see https://github.com/rprichard/winpty
