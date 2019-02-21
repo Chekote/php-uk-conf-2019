@@ -23,6 +23,6 @@ $CMD_PREFIX docker run -it --rm \
     -v "$PATH_PREFIX$(pwd)":/workdir \
     -v "${PATH_PREFIX}${HOME}/.composer":/home/user/.composer \
     -w $PATH_PREFIX/workdir \
-    chekote/php:7.2.14 \
+    chekote/php:7.2.14-laravel5.7 \
     php "$@"
 
