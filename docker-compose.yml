@@ -9,8 +9,9 @@ services:
     volumes:
       - .:/var/www
   web:
-    image: nginx:1.15.6
+    build:
+      context: docker/web
     volumes:
-      - ./public:/usr/share/nginx/html
+      - .:/var/www
     ports:
       - 80:80
