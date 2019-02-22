@@ -6,6 +6,7 @@ services:
     image: chekote/php:7.2.14-laravel5.7
     environment:
       LOCAL_USER_ID: 0
+      WWW_DATA_USER_ID: $USER_ID
     volumes:
       - .:/var/www
   web:
