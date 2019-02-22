@@ -3,7 +3,8 @@ version: '3'
 services:
   app:
     command: php-fpm7.2
-    image: chekote/php:7.2.14-laravel5.7
+    build:
+      context: docker/php
     environment:
       LOCAL_USER_ID: 0
       WWW_DATA_USER_ID: $USER_ID
