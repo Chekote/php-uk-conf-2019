@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# There's a lot more cool stuff we can do with this script, but I don’t have
+# time to go over it in this talk. Come ask me afterwards if you’re interested
+export USER_ID=`id -u`
+
+docker-compose "$@"
+
