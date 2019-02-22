@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/db_test', function () {
+    dump(DB::select('SELECT * FROM pg_catalog.pg_tables;'));
+});
