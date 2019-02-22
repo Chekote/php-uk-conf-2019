@@ -9,6 +9,12 @@ services:
       WWW_DATA_USER_ID: $USER_ID
     volumes:
       - .:/var/www
+  database:
+    image: postgres:11.1
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: phpuk2019
   web:
     build:
       context: docker/web
